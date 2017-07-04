@@ -2,23 +2,23 @@
 I'm using this project as PoC to prove out a model for CI/CD developing puppet.
 
 ## Develop
-During development, developers will use local VMs (vagrant?) to validate their changes. Puppet environments will no longer be managed by git repository branches (see notes in [Release](#Release). Once the feature development is complete, changes can be submitted to the master branch via a pull request.
+During development, developers will use local VMs (vagrant + docker) to validate their changes. Puppet environments will not be managed by git repository branches (see notes in [Release](#Release). Once the feature development is complete, changes can be submitted to the master branch via a pull request.
 
 ## Build
 During the build phase the puppet code will be:
   * linted
   * compiled (syntax validated)
-  * unit tested
+  * unit tested (rspec)
 
 ## Release
-During the release phase the puppet code will be pushed to the puppet master. Eache environment in the release definition will push the code to a different pre-defined environment on the puppet master. Release phases will traverse the following environments and execute the following activities in each:
+During the release phase the puppet code will be pushed to the puppet master. Each environment in the release definition will push the code to a different pre-defined environment on the puppet master. Release phases will traverse the following environments and execute the following activities in each:
   ### Test
     * integration testing
   ### Prod
     * smoke testing
 
 ## Run
-Once promoted to the production environment, the puppet code will be managed by the PE master and a separate hiera backend.
+Once promoted to the production environment, the puppet code will be managed by the PE master and a separate hiera backend (not in the git repo).
 
 # How to use this repo
 Start the puppet master by running ```docker-compose up```.  
