@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  puppet:
+    container_name: puppetserver
+    image: puppet/puppetserver-standalone
+    ports:
+      - 8140:8140
+    volumes:
+      - ./code:/etc/puppetlabs/code/
+      #- ./ssl:/etc/puppetlabs/puppet/ssl/
