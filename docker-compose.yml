@@ -3,6 +3,7 @@ version: '3'
 services:
   puppet:
     container_name: puppetserver
+    hostname: puppetserver
     image: puppet/puppetserver-standalone
     ports:
       - 8140:8140
